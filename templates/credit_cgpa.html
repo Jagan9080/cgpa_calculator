@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VIT Credits CGPA</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="feature-page">
+
+    <!-- TOP HEADING -->
+    <h2 class="feature-title">VIT Credits Based CGPA</h2>
+
+    <!-- CENTER FORM -->
+    <form method="post" class="feature-form">
+
+        <label>Enter subject credits (comma separated)</label>
+        <input type="text"
+               name="credits"
+               placeholder="4,3,3,2"
+               required>
+
+        <label>Enter grades (S, A, B, C, D, E, F)</label>
+        <input type="text"
+               name="grades"
+               placeholder="S,A,B,A"
+               required>
+
+        <button type="submit">Calculate CGPA</button>
+    </form>
+
+    <!-- BOTTOM BACK BUTTON -->
+    <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
+

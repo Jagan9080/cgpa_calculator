@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Next CGPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="feature-page">
+
+    <h2 class="feature-title">Predict Next Semester CGPA</h2>
+
+    <form method="post" class="feature-form">
+        <label>Enter previous semester CGPAs</label>
+        <input type="text" name="sems" placeholder="8.0, 8.2, 8.4" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>

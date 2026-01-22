@@ -1,0 +1,168 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY WITH LOGO + GRADIENT ===== */
+body {
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+
+    /* 🔥 LOGO + GRADIENT (THIS ALWAYS WORKS) */
+    background:
+        url("/static/vitap_logo.png") center / 500px no-repeat,
+        radial-gradient(circle at top, #7f7cff, #4b3ca7);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* ===== HOME CONTAINER ===== */
+.container {
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+/* ===== TITLE ===== */
+h1 {
+    font-size: 42px;
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 20px #9d9bff,
+        0 0 40px #6b6aff;
+}
+
+/* ===== MENU BUTTONS ===== */
+.menu a {
+    display: block;
+    width: 360px;
+    margin: 18px auto;
+    padding: 18px;
+    background: #ffffff;
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.35s ease;
+}
+
+/* ===== NEON GLOW ===== */
+.menu a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        #00f7ff,
+        #ff00ff,
+        #00ff88
+    );
+    opacity: 0;
+    transition: opacity 0.35s;
+    z-index: -1;
+}
+
+.menu a:hover::before {
+    opacity: 1;
+}
+
+.menu a:hover {
+    color: white;
+    transform: scale(1.07);
+    box-shadow:
+        0 0 15px #00f7ff,
+        0 0 30px #ff00ff,
+        0 0 50px #00ff88;
+}
+
+.menu a:active {
+    transform: scale(0.96);
+}
+
+/* ===== FEATURE PAGE LAYOUT ===== */
+.feature-page {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 60px 20px 40px;
+    animation: fadeIn 0.8s ease-in-out;
+
+    /* SAME LOGO ON FEATURE PAGES */
+    background:
+        url("/static/vitap_logo.png") center / 420px no-repeat,
+        radial-gradient(circle at top, #7f7cff, #4b3ca7);
+}
+
+/* ===== FEATURE TITLE ===== */
+.feature-title {
+    font-size: 42px;
+    font-weight: bold;
+    text-align: center;
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 25px #00f7ff,
+        0 0 40px #ff00ff;
+}
+
+/* ===== FEATURE FORM ===== */
+.feature-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255,255,255,0.15);
+    padding: 30px 40px;
+    border-radius: 18px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+        0 0 30px rgba(0,247,255,0.6);
+}
+
+.feature-form input {
+    padding: 12px;
+    width: 280px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+.feature-form button {
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ===== BACK BUTTON ===== */
+.back-btn {
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    padding: 10px 34px;
+    border-radius: 30px;
+}
+
+/* ===== FADE IN ===== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
