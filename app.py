@@ -1,67 +1,78 @@
 from flask import Flask, render_template, request
 import numpy as np
-from sklearn.linear_model import LinearRegression
-import os
 
 app = Flask(__name__)
 
-# ---------------- HOME ----------------
-@app.route("/")
+# Grade to points (VIT style)
+GRADE_POINTS = {
+    'S': 10,
+    'A': 9,
+    'B': 8,
+    'C': 7,
+    'D': 6,
+    'E': 5,
+    'F': 0
+}
+
+@app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template('index.html')
 
-
-# ---------------- SIMPLE ROUTES ----------------
-@app.route("/sem_avg", methods=["GET", "POST"])
-def sem_avg():
-    return render_template("sem_avg.html")
-
-
-@app.route("/year", methods=["GET", "POST"])
-def year():
-    return render_template("year.html")
-
-
-@app.route("/credit", methods=["GET", "POST"])
+@app.route('/credit', methods=['GET', 'POST'])
 def credit():
-    return render_template("credit.html")
+    cgpa = None
+    if request.method == 'POST':
+        credits = list(map(int, request.form['credits'].split(',')))
+        grades = request.form['grades'].split(',')
 
+        total_points = 0
+        total_credits = sum(credits)
 
-@app.route("/mixed", methods=["GET", "POST"])
+        for c, g in zip(credits, grades):
+            total_points += c * GRADE_POINTS[g.strip().upper()]
+
+        cgpa = round(total_points / total_credits, 2)
+
+    return render_template('credit.html', cgpa=cgpa)
+
+@app.route('/year', methods=['GET', 'POST'])
+def year():
+    cgpa = None
+    if request.method == 'POST':
+        values = list(map(float, request.form['cgpas'].split(',')))
+        cgpa = round(sum(values) / len(values), 2)
+
+    return render_template('year.html', cgpa=cgpa)
+
+@app.route('/sem_avg', methods=['GET', 'POST'])
+def sem_avg():
+    cgpa = None
+    if request.method == 'POST':
+        values = list(map(float, request.form['cgpas'].split(',')))
+        cgpa = round(sum(values) / len(values), 2)
+
+    return render_template('sem_avg.html', cgpa=cgpa)
+
+@app.route('/mixed', methods=['GET', 'POST'])
 def mixed():
-    return render_template("mixed.html")
+    cgpa = None
+    if request.method == 'POST':
+        credits = list(map(int, request.form['credits'].split(',')))
+        grades = request.form['grades'].split(',')
 
+        total_points = 0
+        total_credits = sum(credits)
 
-# ---------------- CGPA PREDICTION (ML) ----------------
-@app.route("/predict", methods=["GET", "POST"])
+        for c, g in zip(credits, grades):
+            total_points += c * GRADE_POINTS[g.strip().upper()]
+
+        cgpa = round(total_points / total_credits, 2)
+
+    return render_template('mixed.html', cgpa=cgpa)
+
+@app.route('/predict')
 def predict():
-    if request.method == "POST":
-        sems = list(map(float, request.form.get("sems").split(",")))
+    return render_template('predict.html')
 
-        X = np.array([[sems[i]] for i in range(len(sems)-1)])
-        y = np.array(sems[1:])
-
-        model = LinearRegression()
-        model.fit(X, y)
-
-        predicted = model.predict([[sems[-1]]])[0]
-
-        return render_template(
-            "result.html",
-            title="Predicted Next CGPA",
-            result=round(predicted, 2)
-        )
-
-    return render_template("predict.html")
-
-
-# ---------------- RUN APP ----------------
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
-
-
-
-     
-
-
+if __name__ == '__main__':
+    app.run(debug=True)
