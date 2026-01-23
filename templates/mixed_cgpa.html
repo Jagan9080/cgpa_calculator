@@ -5,24 +5,20 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
 <div class="feature-page">
-
-    <h2 class="feature-title">Mixed CGPA (Years + Semesters)</h2>
+    <h2 class="feature-title">Mixed CGPA</h2>
 
     <form method="post" class="feature-form">
-        <label>Enter year CGPAs (comma separated)</label>
-        <input type="text" name="years" placeholder="8.2, 8.4" required>
-
-        <label>Enter semester CGPAs (comma separated)</label>
-        <input type="text" name="sems" placeholder="8.1, 8.3" required>
-
-        <button type="submit">Calculate</button>
+        <input name="years" placeholder="Years CGPA" required>
+        <input name="sems" placeholder="Sem CGPA" required>
+        <button>Calculate</button>
     </form>
 
+    {% if avg %}
+    <div class="result">{{ avg }}</div>
+    {% endif %}
+
     <a href="/" class="back-btn">⬅ Back</a>
-
 </div>
-
 </body>
 </html>
