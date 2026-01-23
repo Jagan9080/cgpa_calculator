@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Year-wise CGPA</title>
+    <title>Year CGPA</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-
 <div class="feature-page">
-
-    <h2 class="feature-title">Year-wise CGPA</h2>
+    <h2 class="feature-title">Year CGPA</h2>
 
     <form method="post" class="feature-form">
-        <label>Enter year CGPAs (comma separated)</label>
-        <input type="text" name="years" placeholder="8.1, 8.3, 8.5" required>
-        <button type="submit">Calculate</button>
+        <label>Year CGPAs</label>
+        <input name="years" placeholder="8.4,8.8" required>
+        <button>Calculate</button>
     </form>
 
+    {% if avg %}
+    <div class="result">{{ avg }}</div>
+    {% endif %}
+
     <a href="/" class="back-btn">⬅ Back</a>
-
 </div>
-
 </body>
 </html>
 
