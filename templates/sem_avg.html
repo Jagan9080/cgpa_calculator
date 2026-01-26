@@ -1,24 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Semester Average</title>
+    <title>Semester CGPA</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
 <div class="feature-page">
-    <h2 class="feature-title">Semester Average</h2>
+
+    <h2 class="feature-title">Semester CGPA (Credits + Grades)</h2>
 
     <form method="post" class="feature-form">
-        <label>Enter CGPAs</label>
-        <input name="sems" placeholder="8.5,8.7,9.0" required>
-        <button>Calculate</button>
+        <label>Enter subject credits (comma separated)</label>
+        <input type="text" name="credits" placeholder="4,3,3,2" required>
+
+        <label>Enter grades (S,A,B,C,D,E,F)</label>
+        <input type="text" name="grades" placeholder="S,A,B,A" required>
+
+        <button type="submit">Calculate CGPA</button>
     </form>
 
-    {% if avg %}
-    <div class="result">{{ avg }}</div>
-    {% endif %}
-
     <a href="/" class="back-btn">⬅ Back</a>
+
 </div>
+
 </body>
 </html>
