@@ -5,19 +5,21 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+
 <div class="feature-page">
-    <h2 class="feature-title">Predict CGPA</h2>
+
+    <h2 class="feature-title">Predict Next Semester CGPA</h2>
 
     <form method="post" class="feature-form">
-        <input name="sems" placeholder="Remaining Semesters" required>
-        <button>Predict</button>
+        <label>Enter previous semester CGPAs (comma separated)</label>
+        <input type="text" name="sems" placeholder="8.0, 8.2, 8.4" required>
+
+        <button type="submit">Predict</button>
     </form>
 
-    {% if result %}
-    <div class="result">{{ result }}</div>
-    {% endif %}
-
     <a href="/" class="back-btn">⬅ Back</a>
+
 </div>
+
 </body>
 </html>
