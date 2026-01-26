@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Year-wise CGPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="feature-page">
+
+    <h2 class="feature-title">Year-wise CGPA</h2>
+
+    <form method="post" class="feature-form">
+        <label>Enter year CGPAs (comma separated)</label>
+        <input type="text" name="years" placeholder="8.2, 8.4, 8.6" required>
+
+        <button type="submit">Calculate</button>
+    </form>
+
+    <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
