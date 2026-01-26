@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mixed CGPA</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="feature-page">
+
+    <h2 class="feature-title">Mixed CGPA (Weighted Method)</h2>
+
+    <form method="post" class="feature-form">
+        <label>Enter Semester CGPAs (comma separated)</label>
+        <input type="text" name="cgpas" placeholder="8.1, 8.3, 8.6" required>
+
+        <label>Enter Total Credits per Semester (comma separated)</label>
+        <input type="text" name="credits" placeholder="20, 22, 21" required>
+
+        <button type="submit">Calculate Mixed CGPA</button>
+    </form>
+
+    <a href="/" class="back-btn">⬅ Back</a>
+
+</div>
+
+</body>
+</html>
